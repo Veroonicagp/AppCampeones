@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.turing.alan.cpifp.R
+import com.turing.alan.cpifp.data.Champion
 import com.turing.alan.cpifp.data.ChampionsRepository
 import com.turing.alan.cpifp.data.InMemoryChampionsRepository
 import com.turing.alan.cpifp.databinding.FragmentChampionListBinding
@@ -36,7 +37,7 @@ class ChampionListFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CampeonesListAdapter()
+        val adapter = CampeonesListAdapter(::toChampionDetail)
         val rv = binding.rvCampeones
         rv.adapter = adapter
         (rv.adapter as  CampeonesListAdapter).submitList(repository.getChampions())
@@ -45,6 +46,11 @@ class ChampionListFragment : Fragment() {
         super.onResume()
         val recyclerView = binding.rvCampeones
         (recyclerView.adapter as CampeonesListAdapter).submitList(repository.getChampions())
+    }
+
+    private fun toChampionDetail(champion: Champion) {
+        val action = ChampionListFragmentDirections.actionChampionListFragment2ToChampionInfoFragment2(champion.id)
+        findNavController().navigate(action)
     }
 
 

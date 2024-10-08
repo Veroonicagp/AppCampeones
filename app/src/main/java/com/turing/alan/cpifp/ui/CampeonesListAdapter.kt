@@ -9,15 +9,18 @@ import coil.load
 import com.turing.alan.cpifp.data.Champion
 import com.turing.alan.cpifp.databinding.CampeonListItemBinding
 
-class CampeonesListAdapter(): ListAdapter<Champion, CampeonesListAdapter.ChampionViewHolder>(ChampionDiffCallback) {
+class CampeonesListAdapter(private val toChampionDetail:((Champion)->Unit)): ListAdapter<Champion, CampeonesListAdapter.ChampionViewHolder>(ChampionDiffCallback) {
     //ViewHolder: puente entre el xml y la informacion que tenemos
     //inner: todos sus propiedades son visibles para la padre
-    class ChampionViewHolder(private val binding: CampeonListItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ChampionViewHolder(private val binding: CampeonListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(champion: Champion){
             binding.winName.text=champion.name
             binding.title.text= champion.title
             //binding.loren.text=champion.lore
             binding.img.load(champion.imageUrl)
+            binding.root.setOnClickListener  {
+                toChampionDetail(champion)
+            }
         }
     }
 

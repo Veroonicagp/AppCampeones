@@ -9,5 +9,18 @@
     <fragment
         android:id="@+id/championListFragment2"
         android:name="com.turing.alan.cpifp.ui.ChampionListFragment"
-        android:label="ChampionListFragment" />
+        android:label="ChampionListFragment" >
+        <action
+            android:id="@+id/action_championListFragment2_to_championInfoFragment2"
+            app:destination="@id/championInfoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/championInfoFragment2"
+        android:name="com.turing.alan.cpifp.ui.ChampionInfoFragment"
+        android:label="fragment_champion_info"
+        tools:layout="@layout/fragment_champion_info" >
+        <argument
+            android:name="championId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
