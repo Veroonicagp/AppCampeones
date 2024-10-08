@@ -11,7 +11,7 @@ import com.turing.alan.cpifp.databinding.CampeonListItemBinding
 
 class CampeonesListAdapter(private val toChampionDetail:((Champion)->Unit)): ListAdapter<Champion, CampeonesListAdapter.ChampionViewHolder>(ChampionDiffCallback) {
     //ViewHolder: puente entre el xml y la informacion que tenemos
-    //inner: todos sus propiedades son visibles para la padre
+    //inner: todos sus propiedades son visibles para el padre
     inner class ChampionViewHolder(private val binding: CampeonListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(champion: Champion){
             binding.winName.text=champion.name

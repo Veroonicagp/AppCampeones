@@ -36,12 +36,14 @@ class ChampionListFragment : Fragment() {
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //¡?
         super.onViewCreated(view, savedInstanceState)
         val adapter = CampeonesListAdapter(::toChampionDetail)
         val rv = binding.rvCampeones
         rv.adapter = adapter
         (rv.adapter as  CampeonesListAdapter).submitList(repository.getChampions())
     }
+    //..
     override fun onResume() {
         super.onResume()
         val recyclerView = binding.rvCampeones
