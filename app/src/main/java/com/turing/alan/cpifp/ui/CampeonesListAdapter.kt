@@ -16,7 +16,7 @@ class CampeonesListAdapter(): ListAdapter<Champion, CampeonesListAdapter.Champio
         fun bind(champion: Champion){
             binding.winName.text=champion.name
             binding.title.text= champion.title
-            binding.loren.text=champion.lore
+            //binding.loren.text=champion.lore
             binding.img.load(champion.imageUrl)
         }
     }
